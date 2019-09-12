@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Git 及 Github 在工作学习中非常重要，它不仅仅是一个管理存放代码的仓库，更是一个开源的社区。学习Git及Github的操作是首要技能。">
+
+
+
+
+  <meta name="keywords" content="Git,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="赵文博的Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/03/17/Github/">
+
+
+<meta name="description" content="Git 及 Github 在工作学习中非常重要，它不仅仅是一个管理存放代码的仓库，更是一个开源的社区。学习Git及Github的操作是首要技能。">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git">
+<meta property="og:url" content="http://yoursite.com/2018/03/17/Github/index.html">
+<meta property="og:site_name" content="赵文博的Blog">
+<meta property="og:description" content="Git 及 Github 在工作学习中非常重要，它不仅仅是一个管理存放代码的仓库，更是一个开源的社区。学习Git及Github的操作是首要技能。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-12T03:35:59.742Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git">
+<meta name="twitter:description" content="Git 及 Github 在工作学习中非常重要，它不仅仅是一个管理存放代码的仓库，更是一个开源的社区。学习Git及Github的操作是首要技能。">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Git - 赵文博的Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">赵文博的Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Git
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 17 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 style="font-size: 40px;text-align:center;color: #007cdc;">
+    Git和Github基本操作手册
+</h1>
+
+<p>Git 及 Github 在工作学习中非常重要，它不仅仅是一个管理存放代码的仓库，更是一个开源的社区。学习 Git 及 Github 的操作是首要技能。<br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/" target="_blank" rel="noopener">廖雪峰的 Git 教程</a></p>
+<p>额，文档整理的不一定完全准确，请酌情参考。</p>
+<h2 id="1-git-安装及默认设置"><a href="#1-git-安装及默认设置" class="headerlink" title="1.git 安装及默认设置"></a>1.git 安装及默认设置</h2><h3 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 git</h3><p>在 linux 下直接使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+
+<p>windows 下百度 gitbash ，下载安装即可。</p>
+<p>mac 下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><p>配置个人的用户名称和电子邮件地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;newming&quot;</span><br><span class="line">git config --global user.email &quot;977527479@qq.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>可以查看已有的配置信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-工作流程"><a href="#2-工作流程" class="headerlink" title="2.工作流程"></a>2.工作流程</h2><ul>
+<li>克隆 Git 仓库作为工作目录（或者自己新建一个工作目录并初始化为 Git 仓库）。</li>
+<li>增加资源及修改文件。</li>
+<li>提交修改。</li>
+<li>如果他人修改了代码，可以更新资源。</li>
+</ul>
+<h2 id="3-基本操作命令"><a href="#3-基本操作命令" class="headerlink" title="3.基本操作命令"></a>3.基本操作命令</h2><h3 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir demo &amp;&amp; cd demo</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<p>通过创建 demo 文件夹，<code>git init</code> 初始化，新建一个仓库。</p>
+<h3 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h3><p>如果在 github 上已经有了仓库，可以直接通过 <code>git clone</code> 将项目 <code>clone</code> 到本地。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [仓库地址]</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p>查看做了哪些修改。按 <code>q</code> 退出。</p>
+<h3 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h3><p><code>git add</code> 可以将文件添加到缓存去，获得 Git 的跟踪。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch a.html</span><br><span class="line">git add a.html</span><br></pre></td></tr></table></figure>
+
+<p>也可以通过加参数，将所有的文件添加到缓存区。下面的三种方式效果相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git add -A</span><br><span class="line">git add *</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h3><p><code>git status</code> 可以查看当前版本库各个文件的状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h3><p><code>git commit</code> 将缓存区内容添加到仓库中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &apos;版本留言，尽量写的语义话&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h3><p>查看提交记录。</p>
+<h3 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h3><p>取消已经缓存的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
+
+<p>也可以通过版本号回滚</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard [版本号]</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h3><p>git rm 命令把一个文件删除，并把它从 git 的仓库管理系统中移除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm readme.md</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h3><p>取消对某个文件的修改，通过 <code>git status</code> 查看状态，然后执行 <code>git checkout</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 文件名</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-推送代码"><a href="#3-推送代码" class="headerlink" title="3.推送代码"></a>3.推送代码</h2><p>首先，要在 github 上新建仓库，然后 clone 下来。</p>
+<h3 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*首次推送*</span><br><span class="line">git push -u origin master</span><br><span class="line">*之后可以省略参数*</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>如果没有通过 clone 现有仓库，而是直接在本地 <code>git init</code> 的仓库的话，需要先添加远程仓库地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*为这个仓库添加一个远程地址*</span><br><span class="line">git remote add origin [你的github上的仓库地址]</span><br></pre></td></tr></table></figure>
+
+<p>但是这里还有个问题，就是每次 push 都需要输入用户名和密码，很麻烦。这里需要设置下 ssh 。</p>
+<h3 id="设置-public-key"><a href="#设置-public-key" class="headerlink" title="设置 public key"></a>设置 public key</h3><p>首先需要在本地机器上生成 key。执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<p>这时，会在 ~/.ssh/ 文件夹之下生成一对 ssh key ，包括一个 public key 和一个 private key 。（如果是 windows 用户，这个文件一般会在这里：C:\Users\Administrator.ssh）</p>
+<p>复制 public key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat  ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>将拷贝的 public key 添加在 github 账户上：</p>
+<blockquote>
+<p>右上角点击头像-&gt; 点击 settings-&gt; 点击 SSH KEYS-&gt; 点击 ADD SSH KEYS-&gt; 将获取的 public key 粘贴于此</p>
+</blockquote>
+<h2 id="4-分支操作"><a href="#4-分支操作" class="headerlink" title="4.分支操作"></a>4.分支操作</h2><p>创建新分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch [yourbranch]</span><br></pre></td></tr></table></figure>
+
+<p>切换分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [yourbranch]</span><br></pre></td></tr></table></figure>
+
+<p>或者直接创建一个分支，并且切换过去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b [yourbranch]</span><br></pre></td></tr></table></figure>
+
+<p>删除分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d [yourbranch]</span><br></pre></td></tr></table></figure>
+
+<p>推送分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin [yourbranch]</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-分支更新及合并"><a href="#5-分支更新及合并" class="headerlink" title="5.分支更新及合并"></a>5.分支更新及合并</h2><p>拉取主分支上的更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<p>合并其他分支代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge [otherbranch]</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-结语"><a href="#6-结语" class="headerlink" title="6.结语"></a>6.结语</h2><p>额，不完整，不断补充。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Git/">Git</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/03/17/react-router/">
+        <span class="next-text nav-default">React-router</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">GreatDseven.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
