@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="React 是一个用于构建用户界面的 JAVASCRIPT 库。">
+
+
+
+
+  <meta name="keywords" content="React,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="赵文博的Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/03/17/react-router/">
+
+
+<meta name="description" content="React 是一个用于构建用户界面的 JAVASCRIPT 库。">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React基础知识详解">
+<meta property="og:url" content="http://yoursite.com/2018/03/17/react-router/index.html">
+<meta property="og:site_name" content="赵文博的Blog">
+<meta property="og:description" content="React 是一个用于构建用户界面的 JAVASCRIPT 库。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-12T03:27:36.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React基础知识详解">
+<meta name="twitter:description" content="React 是一个用于构建用户界面的 JAVASCRIPT 库。">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> React基础知识详解 - 赵文博的Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">赵文博的Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          React基础知识详解
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 17 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 style="font-size: 40px;text-align:center;color: #007cdc;">React-router路由实践</h1>
+
+<h2 id="1-Router-hashHistory-Route"><a href="#1-Router-hashHistory-Route" class="headerlink" title="1. Router,hashHistory,Route"></a>1. Router,hashHistory,Route</h2><p>首先下载 react-router</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install react-router --save</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，react-router 更新很快，API 也在持续升级，也许你看到市面很多教程，但可能那还是 1.x 甚至是 0.x 版本的。</p>
+<p>我们首先在 App.jsx 写一个简单示例，让你快速的对 react-router 有印象。</p>
+<p>代码清单：<code>app/container/App/App.jsx</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, hashHistory &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;/div&gt;;</span><br><span class="line">const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;/div&gt;;</span><br><span class="line">const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;/div&gt;;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/about&quot; component=&#123;About&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/contact&quot; component=&#123;Contact&#125; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Link"><a href="#2-Link" class="headerlink" title="2. Link"></a>2. Link</h2><p>Link 是 react-router 提供的导航组件，可以直接使用进行路由切换</p>
+<p>代码清单：<code>app/container/App/App.jsx</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, hashHistory, Link &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/about&quot; component=&#123;About&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/contact&quot; component=&#123;Contact&#125; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-browserHistory"><a href="#3-browserHistory" class="headerlink" title="3. browserHistory"></a>3. browserHistory</h2><p>browserHistory 和 hashHistory 不一样，使用 browserHistory 的时候，浏览器中导航栏的 URL 就不会出现_k 的 hash 键值对。实际项目中也一般用 browserHistory.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, browserHistory, Link &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/about&quot; component=&#123;About&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/contact&quot; component=&#123;Contact&#125; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<p>这样正常点击路由切换没有问题，但是重新刷新 URL 就会报找不到路由，这个时候我们在 webpack-dev-server 启动的时候需要加上参数<code>--history-api-fallback</code>。</p>
+<h2 id="4-activeStyle-activeClassName"><a href="#4-activeStyle-activeClassName" class="headerlink" title="4. activeStyle,activeClassName"></a>4. activeStyle,activeClassName</h2><p>当前路由被点击处于触发显示状态的时候，我们可以使用 activeStyle 来给路由设置一些颜色。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, browserHistory, Link &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link activeStyle=&#123;&#123;color: &apos;red&apos;&#125;&#125; to=&quot;/&quot;&gt;Home&lt;/Link&gt;</span><br><span class="line">    &lt;Link activeStyle=&#123;&#123;color: &apos;red&apos;&#125;&#125; to=&quot;/about&quot;&gt;About&lt;/Link&gt;</span><br><span class="line">    &lt;Link activeStyle=&#123;&#123;color: &apos;red&apos;&#125;&#125; to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/about&quot; component=&#123;About&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/contact&quot; component=&#123;Contact&#125; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<p>同理，我们还可以使用 activeClassName 来将路由激活状态的样式抽取出来。</p>
+<p>我们在 App.css 写一个样式，代码清单：<code>app/containers/App/App.jsx</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.active &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后修改 App.jsx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, browserHistory, Link &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link activeClassName=&quot;active&quot; to=&quot;/&quot;&gt;Home&lt;/Link&gt;</span><br><span class="line">    &lt;Link activeClassName=&quot;active&quot; to=&quot;/about&quot;&gt;About&lt;/Link&gt;</span><br><span class="line">    &lt;Link activeClassName=&quot;active&quot; to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/about&quot; component=&#123;About&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/contact&quot; component=&#123;Contact&#125; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-路由嵌套"><a href="#5-路由嵌套" class="headerlink" title="5. 路由嵌套"></a>5. 路由嵌套</h2><p>刚才讲的是简单路由的切换，但实际应用中，路由是分多个层级的。幸运的是，我们可以使用 react-router 的路由嵌套来清晰的管理路由和组件之间的切换展示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, browserHistory, Link &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">const Home = (props) =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;Home&lt;/h1&gt;</span><br><span class="line">    &lt;Links /&gt;</span><br><span class="line">    &#123;props.children&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const About = (props) =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;About&lt;/h1&gt;</span><br><span class="line">    &#123;props.children&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const Contact = () =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;Contact&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link activeClassName=&quot;active&quot; to=&quot;/&quot;&gt;Home&lt;/Link&gt;</span><br><span class="line">    &lt;Link activeClassName=&quot;active&quot; to=&quot;/about&quot;&gt;About&lt;/Link&gt;</span><br><span class="line">    &lt;Link activeClassName=&quot;active&quot; to=&quot;/about/contact&quot;&gt;Contact&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Home&#125;&gt;</span><br><span class="line">          &lt;Route path=&quot;about&quot; component=&#123;About&#125;&gt;</span><br><span class="line">            &lt;Route path=&quot;contact&quot; component=&#123;Contact&#125; /&gt;</span><br><span class="line">          &lt;/Route&gt;</span><br><span class="line">        &lt;/Route&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-IndexRoute"><a href="#6-IndexRoute" class="headerlink" title="6. IndexRoute"></a>6. IndexRoute</h2><p>IndexRoute 即处理页面初始进入时候的组件展示，等路由切换的时候，再根据其他路由规则进行组件的切换展示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, browserHistory, Link, IndexRoute &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">const Home = (props) =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;Home&lt;/h1&gt;</span><br><span class="line">    &lt;Links /&gt;</span><br><span class="line">    &#123;props.children&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const About = () =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;About&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const Contact = () =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;Contact&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link activeClassName=&quot;active&quot; to=&quot;/&quot;&gt;Home&lt;/Link&gt;</span><br><span class="line">    &lt;Link activeClassName=&quot;active&quot; to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Home&#125;&gt;</span><br><span class="line">          &lt;IndexRoute component=&#123;About&#125; /&gt;</span><br><span class="line">          &lt;Route path=&quot;contact&quot; component=&#123;Contact&#125; /&gt;</span><br><span class="line">        &lt;/Route&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-路由变量"><a href="#7-路由变量" class="headerlink" title="7. 路由变量"></a>7. 路由变量</h2><p>刚才展示的是常规的路由，路由中的规则是给定的，现在我们尝试使用路由变量，在组件中获取这个路由的变量，并做相应的组件展示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, hashHistory, Link, IndexRoute &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">const Message = (props) =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;&#123;props.params.message || &apos;Hello&apos;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;Links /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/yong&quot;&gt;Yong&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/feng&quot;&gt;Feng&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/(:message)&quot; component=&#123;Message&#125; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-Route-中-components-参数的高级用法"><a href="#8-Route-中-components-参数的高级用法" class="headerlink" title="8. Route 中 components 参数的高级用法"></a>8. Route 中 components 参数的高级用法</h2><p>Route 中 components 中接收的参数不仅仅只是实际的组件，还可以是对象，通过这样的用法，我们可以更灵活的控制组件的展示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, hashHistory, Link, IndexRoute &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">const HomeHeader = () =&gt; &lt;h1&gt;HomeHeader&lt;/h1&gt;</span><br><span class="line">const HomeBody = () =&gt; &lt;h1&gt;HomeBody&lt;/h1&gt;</span><br><span class="line">const AboutHeader = () =&gt; &lt;h1&gt;AboutHeader&lt;/h1&gt;</span><br><span class="line">const AboutBody = () =&gt; &lt;h1&gt;AboutBody&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">const Container = (props) =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &#123;props.header&#125;</span><br><span class="line">    &#123;props.body&#125;</span><br><span class="line">    &lt;Links /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Container&#125;&gt;</span><br><span class="line">          &lt;IndexRoute components=&#123;&#123; header:HomeHeader, body:HomeBody &#125;&#125; /&gt;</span><br><span class="line">          &lt;Route path=&quot;about&quot; components=&#123;&#123; header:AboutHeader, body:AboutBody &#125;&#125; /&gt;</span><br><span class="line">        &lt;/Route&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-使用-query-获取-URL-中的参数"><a href="#9-使用-query-获取-URL-中的参数" class="headerlink" title="9. 使用 query 获取 URL 中的参数"></a>9. 使用 query 获取 URL 中的参数</h2><p>我们可以将 URL 中访问的参数获取，并且应用到组件中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, hashHistory, Link, IndexRoute &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">const Page = (props) =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;&#123;props.location.query.message || &apos;Hello&apos;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Page&#125; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<p>然后在 url 中输入<code>http://localhost:8080/#/?message=guoyongfeng</code>，页面中就会显示<code>guoyongfeng</code>。</p>
+<p><strong>另外，我们还可以在 Link 组件中设置 pathname 和 query 变量</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, hashHistory, Link, IndexRoute &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">const Page = (props) =&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;&#123;props.location.query.message || &apos;Hello&apos;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link to=&#123;&#123; pathname: &quot;/&quot;, query: &#123;message: &quot;guoyongfeng&quot;&#125; &#125;&#125; /&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Page&#125; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-Redirect-重定向"><a href="#10-Redirect-重定向" class="headerlink" title="10. Redirect 重定向"></a>10. Redirect 重定向</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, hashHistory, Link, Redirect &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line">const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/contact-us&quot;&gt;Contact US&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/about&quot; component=&#123;About&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/contact-us&quot; component=&#123;Contact&#125; /&gt;</span><br><span class="line">        &lt;Redirect from=&quot;/contact&quot; to=&quot;/contact-us&quot; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-setRouteLeaveHook-路由钩子函数：处理路由切换时的操作"><a href="#11-setRouteLeaveHook-路由钩子函数：处理路由切换时的操作" class="headerlink" title="11. setRouteLeaveHook 路由钩子函数：处理路由切换时的操作"></a>11. setRouteLeaveHook 路由钩子函数：处理路由切换时的操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component, PropTypes &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Router, Route, hashHistory, Link &#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">class Home extends Component &#123;</span><br><span class="line">  componentWillMount()&#123;</span><br><span class="line">    this.context.router.setRouteLeaveHook(</span><br><span class="line">      this.props.route,</span><br><span class="line">      this.routerWillLeave</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  routerWillLeave( nextLocation )&#123;</span><br><span class="line">    return `页面即将从Home切换到$&#123;nextLocation.pathname&#125;`</span><br><span class="line">  &#125;</span><br><span class="line">  render()&#123;</span><br><span class="line">    return &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;Home&lt;/h1&gt;</span><br><span class="line">      &lt;Links /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Home.contextTypes = &#123;</span><br><span class="line">  router: PropTypes.object.isRequired</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;</span><br><span class="line"></span><br><span class="line">const Links = () =&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;</span><br><span class="line">    &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/contact&quot; component=&#123;Contact&#125; /&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>总的来说，react-router 的学习难度不高，但是会有不同版本间 API 升级的坑，后续大家持续关注，或是使用某一个自己熟悉的 react-router 版本。</p>
+<p>转至<a href="http://guoyongfeng.github.io/idoc/html/React%E8%AF%BE%E7%A8%8B%E4%B8%93%E9%A2%98/React-router%E8%B7%AF%E7%94%B1%E5%AE%9E%E8%B7%B5.html" target="_blank" rel="noopener">郭永峰</a>技术文档</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://github.com/react-guide/react-router-cn" target="_blank" rel="noopener">react-router-cn</a></li>
+<li><a href="http://react-guide.github.io/react-router-cn/index.html" target="_blank" rel="noopener">React Router 中文文档</a></li>
+<li><a href="https://github.com/reactjs/react-router" target="_blank" rel="noopener">react-router on github</a></li>
+<li><a href="https://github.com/reactjs/react-router-tutorial" target="_blank" rel="noopener">react-router-tutorial</a></li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/React/">React</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">GreatDseven.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
