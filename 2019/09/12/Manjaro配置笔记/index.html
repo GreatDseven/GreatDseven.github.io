@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="赵文博的Blog">
 <meta property="og:description" content="Manjaro是一款基于Arch Linux、对用户友好、全球排名第1的Linux发行版。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-12T09:12:02.611Z">
+<meta property="og:updated_time" content="2019-09-12T09:26:18.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Manjaro配置笔记">
 <meta name="twitter:description" content="Manjaro是一款基于Arch Linux、对用户友好、全球排名第1的Linux发行版。">
@@ -130,27 +130,26 @@
 
     
             <div class="post-content">
-            <h2 id="1-源镜像与系统更新"><a href="#1-源镜像与系统更新" class="headerlink" title="1.源镜像与系统更新"></a>1.源镜像与系统更新</h2><p>排列源(选择华为！)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure>
+            <h1 style="font-size: 40px;text-align:center;color: #007cdc;">
+Manjaro配置笔记
 
-<p>同步并优化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Syy</span><br></pre></td></tr></table></figure>
+</h1>
 
-<p>升级系统：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Syu</span><br></pre></td></tr></table></figure>
+<h2 id="1-源镜像与系统更新"><a href="#1-源镜像与系统更新" class="headerlink" title="1.源镜像与系统更新"></a>1.源镜像与系统更新</h2><h3 id="排列源-选择华为"><a href="#排列源-选择华为" class="headerlink" title="排列源(选择华为)"></a>排列源(选择华为)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure>
 
-<p>升级系统后安装字体包，会出现乱码，执行下面这句话</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S wqy-microhei</span><br></pre></td></tr></table></figure>
+<h3 id="同步并优化"><a href="#同步并优化" class="headerlink" title="同步并优化"></a>同步并优化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Syy</span><br></pre></td></tr></table></figure>
 
-<p>安装 archlinuxcn 签名钥匙</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/pacman.conf</span><br></pre></td></tr></table></figure>
+<h3 id="升级系统："><a href="#升级系统：" class="headerlink" title="升级系统："></a>升级系统：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Syu</span><br></pre></td></tr></table></figure>
 
-<p>添加以下代码<br>[archlinuxcn]<br>SigLevel = Optional TrustedOnly<br>Server = <a href="https://mirrors.ustc.edu.cn/archlinuxcn/$arch" target="_blank" rel="noopener">https://mirrors.ustc.edu.cn/archlinuxcn/$arch</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Syy</span><br></pre></td></tr></table></figure>
+<h4 id="（升级系统后安装字体包，会出现乱码，执行下面这句话）"><a href="#（升级系统后安装字体包，会出现乱码，执行下面这句话）" class="headerlink" title="（升级系统后安装字体包，会出现乱码，执行下面这句话）"></a>（升级系统后安装字体包，会出现乱码，执行下面这句话）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S wqy-microhei</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-安装-archlinuxcn-签名钥匙"><a href="#2-安装-archlinuxcn-签名钥匙" class="headerlink" title="2.安装 archlinuxcn 签名钥匙"></a>2.安装 archlinuxcn 签名钥匙</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/pacman.conf</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加以下代码"><a href="#添加以下代码" class="headerlink" title="添加以下代码"></a>添加以下代码</h4><h4 id="archlinuxcn"><a href="#archlinuxcn" class="headerlink" title="[archlinuxcn]"></a>[archlinuxcn]</h4><h4 id="SigLevel-Optional-TrustedOnly"><a href="#SigLevel-Optional-TrustedOnly" class="headerlink" title="SigLevel = Optional TrustedOnly"></a>SigLevel = Optional TrustedOnly</h4><h4 id="Server-https-mirrors-ustc-edu-cn-archlinuxcn-arch"><a href="#Server-https-mirrors-ustc-edu-cn-archlinuxcn-arch" class="headerlink" title="Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch"></a>Server = <a href="https://mirrors.ustc.edu.cn/archlinuxcn/$arch" target="_blank" rel="noopener">https://mirrors.ustc.edu.cn/archlinuxcn/$arch</a></h4><h4 id="重新升级系统"><a href="#重新升级系统" class="headerlink" title="重新升级系统"></a>重新升级系统</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Syy</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S fcitx-im</span><br></pre></td></tr></table></figure>
+<h2 id="3-配置输入法"><a href="#3-配置输入法" class="headerlink" title="3.配置输入法"></a>3.配置输入法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S fcitx-im</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S fcitx-configtool</span><br></pre></td></tr></table></figure>
 
@@ -158,12 +157,11 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi ~/.xprofile</span><br></pre></td></tr></table></figure>
 
-<p>添加以下内容<br>export GTK_IM_MODULE=fcitx<br>export QT_IM_MODULE=fcitx<br>export XMODIFIERS=”@im=fcitx”<br>输入法设置<br>$ sudo pacman -S fcitx-qt4 输入法异常，请删除.config 解决方法<br>语言包安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Sy yay</span><br></pre></td></tr></table></figure>
+<h4 id="添加以下内容"><a href="#添加以下内容" class="headerlink" title="添加以下内容"></a>添加以下内容</h4><h4 id="export-GTK-IM-MODULE-fcitx"><a href="#export-GTK-IM-MODULE-fcitx" class="headerlink" title="export GTK_IM_MODULE=fcitx"></a>export GTK_IM_MODULE=fcitx</h4><h4 id="export-QT-IM-MODULE-fcitx"><a href="#export-QT-IM-MODULE-fcitx" class="headerlink" title="export QT_IM_MODULE=fcitx"></a>export QT_IM_MODULE=fcitx</h4><h4 id="export-XMODIFIERS-”-im-fcitx”"><a href="#export-XMODIFIERS-”-im-fcitx”" class="headerlink" title="export XMODIFIERS=”@im=fcitx”"></a>export XMODIFIERS=”@im=fcitx”</h4><h4 id="输入法设置"><a href="#输入法设置" class="headerlink" title="输入法设置"></a>输入法设置</h4><h4 id="sudo-pacman-S-fcitx-qt4-输入法异常，请删除-config-解决方法"><a href="#sudo-pacman-S-fcitx-qt4-输入法异常，请删除-config-解决方法" class="headerlink" title="$ sudo pacman -S fcitx-qt4 输入法异常，请删除.config 解决方法"></a>$ sudo pacman -S fcitx-qt4 输入法异常，请删除.config 解决方法</h4><h4 id="语言包安装"><a href="#语言包安装" class="headerlink" title="语言包安装"></a>语言包安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Sy yay</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Sy</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yay -Sy</span><br></pre></td></tr></table></figure>
+<h2 id="4-安装常用软件"><a href="#4-安装常用软件" class="headerlink" title="4.安装常用软件"></a>4.安装常用软件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yay -Sy</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yay -Ss chrome</span><br></pre></td></tr></table></figure>
 
@@ -183,9 +181,7 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yay -S netease-cloud-music</span><br></pre></td></tr></table></figure>
 
-<p>安装主题</p>
-<p>安装 teamviewer</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S teamviewer</span><br></pre></td></tr></table></figure>
+<h3 id="安装-teamviewer"><a href="#安装-teamviewer" class="headerlink" title="安装 teamviewer"></a>安装 teamviewer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S teamviewer</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo teamviewer --daemon enable</span><br></pre></td></tr></table></figure>
 
